@@ -152,7 +152,7 @@ class pacemaker::corosync(
       $cluster_members_rrp_real = $cluster_members_rrp
     }
 
-    $cluster_setup_extras_real = inline_template('<%= @cluster_setup_extras.flatten.join(" ") %>')
+    $cluster_setup_extras_real = inline_template('<%= @cluster_setup_extras.to_a.flatten.join(" ") %>')
     Exec <|tag == 'pacemaker-auth'|>
     ->
     exec {"Create Cluster ${cluster_name}":
